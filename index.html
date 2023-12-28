@@ -1,260 +1,170 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cercle Electronic Music Festival Quiz</title>
-  <style>
-    body {
-      margin: 0;
-      overflow: hidden;
-      background-color: #1a1a1a;
-      color: #ffffff;
-      font-family: 'Arial', sans-serif;
-      font-size: 18px;
-      text-align: center;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Música Eletrónica</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: black;
+            color: #ecf0f1;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 28px;
+            text-align: center;
+        }
 
-    #question-container {
-      padding: 20px;
-      border: 2px solid #3498db;
-      border-radius: 10px;
-      background-color: #2c3e50;
-      margin: 20px;
-    }
+        #question-container {
+            padding: 20px;
+            border: 2px solid #e74c3c;
+            border-radius: 10px;
+            background-color: #2c3e50;
+        }
 
-    h1 {
-      font-size: 24px;
-      color: #3498db;
-      margin-bottom: 20px;
-    }
+        h1 {
+            font-size: 36px;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
 
-    #countdown {
-      margin-top: 10px;
-    }
+        #countdown {
+            margin-top: 10px;
+        }
 
-    .answer {
-      color: #e74c3c;
-      margin-top: 20px;
-      font-size: 20px;
-    }
-  </style>
+        .answer {
+            color: yellow;
+        }
+    </style>
 </head>
-
 <body>
 
-  <div id="question-container"></div>
-
-  <script>
+<script>
     document.addEventListener("DOMContentLoaded", function () {
-      const questionContainer = document.getElementById("question-container");
-      const countdownElement = document.createElement("div");
+        const questionContainer = document.createElement("div");
+        const countdownElement = document.createElement("div");
 
-      document.body.appendChild(questionContainer);
+        document.body.appendChild(questionContainer);
 
-      const cercleQuestions = [
-        {
-  question: "Which city is the Sónar Festival primarily held in, showcasing advanced music and multimedia art?",
-  answer: "Barcelona"
-},
-{
-  question: "Name the electronic music duo known for tracks like 'One More Time' and 'Get Lucky,' who performed at Sónar in 1997?",
-  answer: "Daft Punk"
-},
-{
-  question: "Who is the Spanish DJ and producer, considered one of the pioneers of techno in Spain, and has a strong association with Sónar?",
-  answer: "Oscar Mulero"
-},
-{
-  question: "Which Sónar edition featured the world premiere of Björk's Biophilia multimedia project in 2011?",
-  answer: "Sónar Barcelona 2011"
-},
-{
-  question: "Name the Icelandic avant-garde musician and electronic music artist who presented a 360-degree audiovisual show at Sónar 2017?",
-  answer: "Björk"
-},
-{
-  question: "Which English DJ and electronic music producer, known for his ambient and downtempo styles, performed at Sónar 2002?",
-  answer: "Brian Eno"
-},
-{
-  question: "Who is the German DJ and producer, a key figure in the development of electronic dance music, and performed at Sónar 2000?",
-  answer: "Kraftwerk"
-},
-{
-  question: "Name the Spanish DJ, producer, and composer known for his eclectic style and founding the label Hivern Discs?",
-  answer: "John Talabot"
-},
-{
-  question: "Which Sónar edition celebrated its 25th anniversary in 2018, featuring artists like Gorillaz and LCD Soundsystem?",
-  answer: "Sónar Barcelona 2018"
-},
-{
-  question: "Who is the British electronic music duo known for their album 'Exit Planet Dust' and headlined Sónar by Night in 2019?",
-  answer: "The Chemical Brothers"
-}
-{
-  question: "Who is the German DJ and producer known for his deep and melodic techno sets, often associated with the Innervisions label?",
-  answer: "Dixon"
-},
-{
-  question: "Which Swedish DJ and producer is a member of the supergroup Swedish House Mafia and known for hits like 'Wake Me Up'?",
-  answer: "Avicii"
-},
-{
-  question: "Name the French DJ and record producer known for his contributions to the 'French touch' electronic music movement, with tracks like 'Gym Tonic'?",
-  answer: "Bob Sinclar"
-},
-{
-  question: "Which Dutch DJ and music producer is known for his trance and big room house music and has a residency at Hï Ibiza?",
-  answer: "Armin van Buuren"
-},
-{
-  question: "Who is the Canadian electronic music DJ and producer known for his progressive house tracks and the label 'Mau5trap'?",
-  answer: "Deadmau5"
-},
-{
-  question: "Name the English electronic music duo consisting of brothers Howard and Guy, known for their deep house and ambient music?",
-  answer: "Disclosure"
-},
-{
-  question: "Which Belgian DJ and record producer is a pioneer of the 'New Beat' genre and had a massive hit with 'Pump Up the Jam'?",
-  answer: "Technotronic"
-},
-{
-  question: "Who is the Dutch DJ and record producer known for his big room house and electro house music, with tracks like 'Spaceman'?",
-  answer: "Hardwell"
-},
-{
-  question: "Name the American DJ and record producer known for his trap and bass music, with hits like 'Harlem Shake'?",
-  answer: "Baauer"
-},
-{
-  question: "Which French DJ and electronic music producer is known for his work in the 'French house' genre and tracks like 'Feel Good Inc.'?",
-  answer: "Stardust (Thomas Bangalter)"
-}
-{
-  question: "Which electronic music festival is known for its unique location in the Moroccan desert?",
-  answer: "Oasis Festival"
-},
-{
-  question: "In which European city does the Time Warp Festival, known for its techno lineup, take place?",
-  answer: "Mannheim"
-},
-{
-  question: "What is the name of the techno festival held annually at the former military base in Poland?",
-  answer: "Unsound Festival"
-},
-{
-  question: "Which techno and house music festival is held in an abandoned coal mine in Germany?",
-  answer: "Melt Festival"
-},
-{
-  question: "In which Spanish city does the DGTL Festival, focused on sustainability, occur?",
-  answer: "Barcelona"
-},
-{
-  question: "What is the exclusive electronic music festival that takes place on the island of Pag in Croatia?",
-  answer: "Sonus Festival"
-},
-{
-  question: "Which techno and house festival is famous for its industrial setting in a former steelworks plant?",
-  answer: "Awakenings Festival"
-},
-{
-  question: "In which Middle Eastern city does the futuristic electronic music festival, FORM, happen?",
-  answer: "Arcosanti"
-},
-{
-  question: "What is the name of the techno festival held annually at the iconic Gashouder venue in Amsterdam?",
-  answer: "Awakenings"
-},
-{
-  question: "Which European city hosts the experimental and avant-garde electronic music festival, CTM Festival?",
-  answer: "Berlin"
-}
-{
-  question: "Which DJ performed at Cercle with the backdrop of the ancient city of Petra?",
-  answer: "Dixon"
-},
-{
-  question: "In which country did Cercle host a DJ set at a historical castle overlooking the sea?",
-  answer: "Portugal"
-},
-{
-  question: "What is the famous desert where Cercle featured a DJ set with the Sphinx and Pyramids in the background?",
-  answer: "Sahara Desert"
-},
-{
-  question: "Which DJ played a set at Cercle in a location known for its stunning lavender fields?",
-  answer: "Laurent Garnier"
-},
-{
-  question: "In which city did Cercle host a DJ set on a boat sailing through its iconic canals?",
-  answer: "Amsterdam"
-},
-{
-  question: "What is the name of the French island where Cercle featured a DJ set in a beautiful natural amphitheater?",
-  answer: "Corsica"
-},
-{
-  question: "Which DJ performed at Cercle with the Eiffel Tower as the backdrop?",
-  answer: "Kölsch"
-},
-{
-  question: "In which city did Cercle host a show featuring the DJ duo Tale Of Us at a historic amphitheater?",
-  answer: "Athens"
-},
-{
-  question: "What is the venue where Cercle hosted a DJ set with a panoramic view of the city of Florence?",
-  answer: "Piazzale Michelangelo"
-},
-{
-  question: "Which DJ performed at Cercle in a location famous for its ancient windmills?",
-  answer: "Amelie Lens"
-}
+        const allMusicQuestions = [
+            {
+                question: "Quem é um DJ de renome internacional e conhecido por suas performances cativantes em festivais como o Cercle?",
+                answer: "Dixon"
+            },
+            {
+                question: "Qual é um dos festivais de música eletrónica mais exclusivos em Portugal, conhecido por seus locais únicos?",
+                answer: "Neopop Festival"
+            },
+            {
+                question: "Onde acontece o famoso festival de música eletrónica Sónar?",
+                answer: "Barcelona, Espanha"
+            },
+            {
+                question: "Quem é o famoso DJ francês conhecido por suas colaborações com artistas como Daft Punk e Madonna?",
+                answer: "David Guetta"
+            },
+            {
+                question: "Qual é o local lendário em Ibiza conhecido por suas icônicas festas de música eletrónica?",
+                answer: "Pacha Ibiza"
+            },
+            {
+                question: "Quem é a dupla francesa famosa por hits como 'One More Time' e 'Get Lucky'?",
+                answer: "Daft Punk"
+            },
+            {
+                question: "Em que cidade a famosa Tomorrowland realiza seus eventos de música eletrónica?",
+                answer: "Boom, Bélgica"
+            },
+            {
+                question: "Qual é o festival de música eletrónica realizado anualmente no deserto de Nevada, EUA?",
+                answer: "Burning Man"
+            },
+            {
+                question: "Quem é o DJ e produtor sueco conhecido por 'Wake Me Up' e 'Levels'?",
+                answer: "Avicii"
+            },
+            {
+                question: "Em que cidade ocorre o festival Ultra Music, que se expandiu para vários países ao redor do mundo?",
+                answer: "Miami, EUA"
+            },
+            {
+                question: "Quem é a artista sul-africana conhecida por 'Cola' e suas performances emotivas?",
+                answer: "CamelPhat"
+            },
+            {
+                question: "Qual é o festival de música eletrónica que acontece nas praias de Barcelona?",
+                answer: "Primavera Sound"
+            },
+            {
+                question: "Quem é o DJ belga conhecido por 'The Hum' e 'Mammoth'?",
+                answer: "Dimitri Vegas & Like Mike"
+            },
+            {
+                question: "Em que local histórico de Lisboa ocorre o evento 'Brunch Electronik'?",
+                answer: "LX Factory"
+            },
+            {
+                question: "Quem é a DJ brasileira conhecida por seu estilo único e colaborações com grandes artistas?",
+                answer: "Anna"
+            },
+            {
+                question: "Qual é o festival de música eletrónica que acontece nas margens do rio Elba, em Dresden?",
+                answer: "Showcase Monday"
+            },
+            {
+                question: "Quem é o DJ espanhol conhecido por suas influências flamenca e techno?",
+                answer: "Paco Osuna"
+            },
+            {
+                question: "Em que cidade ocorre o festival ADE (Amsterdam Dance Event), um dos maiores eventos de música eletrónica do mundo?",
+                answer: "Amsterdã, Holanda"
+            },
+            {
+                question: "Quem é o DJ e produtor britânico que lidera a gravadora Anjunabeats?",
+                answer: "Above & Beyond"
+            },
+            {
+                question: "Qual é o festival de música eletrónica que acontece nas praias de Almada, Portugal?",
+                answer: "Nova Era Beach Party"
+            },
+        ];
 
-      ];
+        function displayRandomQuestion() {
+            const randomIndex = Math.floor(Math.random() * allMusicQuestions.length);
+            const currentQuestion = allMusicQuestions[randomIndex];
 
-      function displayRandomQuestion() {
-        const randomIndex = Math.floor(Math.random() * cercleQuestions.length);
-        const currentQuestion = cercleQuestions[randomIndex];
+            questionContainer.innerHTML = `<h1>${currentQuestion.question}</h1>`;
+            questionContainer.appendChild(countdownElement);
 
-        questionContainer.innerHTML = `<h1>${currentQuestion.question}</h1>`;
-        questionContainer.appendChild(countdownElement);
+            let secondsLeft = 15;
+            countdownElement.textContent = `Tempo restante: ${secondsLeft}s`;
 
-        // Show the countdown for 15 seconds
-        let secondsLeft = 15;
-        countdownElement.textContent = `Time left: ${secondsLeft}s`;
+            const countdownInterval = setInterval(() => {
+                secondsLeft--;
 
-        const countdownInterval = setInterval(() => {
-          secondsLeft--;
+                if (secondsLeft >= 0) {
+                    countdownElement.textContent = `Tempo restante: ${secondsLeft}s`;
+                } else {
+                    clearInterval(countdownInterval);
 
-          if (secondsLeft >= 0) {
-            countdownElement.textContent = `Time left: ${secondsLeft}s`;
-          } else {
-            clearInterval(countdownInterval);
+                    questionContainer.innerHTML += `<h1 class="answer">Resposta: ${currentQuestion.answer}</h1>`;
+                    setTimeout(() => {
+                        questionContainer.innerHTML = "<h1>Lança o dado outra vez e lê o código para um novo desafio</h1>";
+                        setTimeout(() => {
+                            document.body.style.backgroundColor = "black";
+                        }, 10000);
+                    }, 10000);
+                }
+            }, 1000);
+        }
 
-            // Show the answer for 10 seconds
-            questionContainer.innerHTML += `<h1 class="answer">Answer: ${currentQuestion.answer}</h1>`;
-            setTimeout(() => {
-              // Display "Roll the dice again and read the code for a new challenge" for 10 seconds
-              questionContainer.innerHTML = "<h1>Roll the dice again and read the code for a new challenge</h1>";
-              setTimeout(() => {
-                // Make the entire page black after 10 seconds
-                document.body.style.backgroundColor = "#1a1a1a";
-              }, 10000);
-            }, 10000);
-          }
-        }, 1000);
-      }
-
-      displayRandomQuestion(); // Initial call to start the quiz
+        displayRandomQuestion();
     });
-  </script>
+</script>
 
 </body>
-
 </html>
-
